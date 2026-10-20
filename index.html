@@ -141,6 +141,24 @@
     }
     .names li { font: 500 20px/1.3 var(--serif); padding: 14px 0; border-bottom: 1px solid var(--rule); }
 
+    /* Extra photos: one row that scrolls sideways, lined up with the page's left edge */
+    .photos { padding: clamp(40px, 6vw, 72px) 0; border-top: 1px solid var(--rule); }
+    .strip {
+      display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain;
+      scroll-snap-type: x proximity; scrollbar-width: none;
+      padding-inline: max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter)));
+      scroll-padding-inline: max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter)));
+    }
+    .strip::-webkit-scrollbar { display: none; }
+    .strip img { flex: none; width: auto; max-width: none; height: clamp(220px, min(52vh, 62vw), 520px); scroll-snap-align: start; }
+    .strip-nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+    .strip-nav button {
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule);
+      background: none; color: var(--ink); font: 400 18px/1 var(--sans); cursor: pointer;
+    }
+    .strip-nav button:hover:not(:disabled) { border-color: var(--ink); }
+    .strip-nav button:disabled { opacity: .3; cursor: default; }
+
     .media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     @media (max-width: 680px) { .media-grid { grid-template-columns: 1fr; } }
     .yt {
@@ -253,6 +271,19 @@
       </div>
     </section>
 
+    <section class="photos" aria-label="Photos">
+      <div class="strip" tabindex="0" aria-label="Photos, scroll sideways">
+        <img src="assets/live-blue.webp" width="1170" height="643" loading="lazy"
+             alt="Brett Lanier playing pedal steel under blue stage lights">
+        <img src="assets/live-bw.webp" width="705" height="561" loading="lazy"
+             alt="Brett Lanier at the pedal steel, in black and white">
+      </div>
+      <div class="wrap strip-nav">
+        <button type="button" data-dir="-1" aria-label="Previous photo">←</button>
+        <button type="button" data-dir="1" aria-label="Next photo">→</button>
+      </div>
+    </section>
+
     <section class="block" id="listen" hidden>
       <div class="wrap">
         <h2>Listen</h2>
@@ -322,6 +353,24 @@
     const onScroll = () => header.classList.toggle('is-solid', window.scrollY > 40);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Photo strip arrows: page sideways, dim at either end, hide when everything fits.
+    const strip = document.querySelector('.strip');
+    const stripNav = document.querySelector('.strip-nav');
+    const [prev, next] = stripNav.querySelectorAll('button');
+    const updateArrows = () => {
+      const max = strip.scrollWidth - strip.clientWidth;
+      stripNav.hidden = max < 4;
+      prev.disabled = strip.scrollLeft < 4;
+      next.disabled = strip.scrollLeft > max - 4;
+    };
+    stripNav.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+      strip.scrollBy({ left: Number(b.dataset.dir) * strip.clientWidth * 0.8, behavior: 'smooth' });
+    }));
+    strip.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    strip.querySelectorAll('img').forEach((img) => img.addEventListener('load', updateArrows));
+    updateArrows();
 
     // Click-to-load YouTube: show the thumbnail, load the player only on click.
     document.querySelectorAll('a.yt[data-id]').forEach((el) => {
