@@ -134,6 +134,13 @@
       .rows .what { text-align: left; }
     }
 
+    .names {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); column-gap: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .names li { font: 500 20px/1.3 var(--serif); padding: 14px 0; border-bottom: 1px solid var(--rule); }
+
     .media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     @media (max-width: 680px) { .media-grid { grid-template-columns: 1fr; } }
     .yt {
@@ -216,11 +223,27 @@
     <section class="block" id="credits">
       <div class="wrap">
         <h2>Credits</h2>
-        <ul class="rows">
-          <li><span class="who">Billy Currington</span><span class="what">Touring band</span></li>
-          <li><span class="who">The Barr Brothers</span><span class="what">Live</span></li>
-          <li><span class="who">Timbo</span><span class="what">Pedal steel</span></li>
-          <li><span class="who">Mike Wheeler</span><span class="what">“El Dorado”</span></li>
+        <ul class="names">
+          <li>Anders Parker</li>
+          <li>The Barr Brothers</li>
+          <li>Cabinet</li>
+          <li>Caroline Rose</li>
+          <li>Django Soulo</li>
+          <li>Eric George</li>
+          <li>Erin Cassels-Brown</li>
+          <li>Esther Rose</li>
+          <li>Eva Rose King</li>
+          <li>Jamie Lee Thurston</li>
+          <li>Kelly Ravin</li>
+          <li>Kountry Boi</li>
+          <li>Leo Kottke &amp; Mike Gordon</li>
+          <li>Maryse Smith</li>
+          <li>Michael Nau</li>
+          <li>Reid Parsons</li>
+          <li>Rough Francis</li>
+          <li>Sabouyouma</li>
+          <li>Samuel Lawrence</li>
+          <li>Taylor Haskins and Green Empire</li>
         </ul>
       </div>
     </section>
