@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brett Lanier — Pedal Steel Guitar</title>
+  <meta name="description" content="Brett Lanier, pedal steel guitar, Nashville. Remote sessions and pedal steel repair.">
+  <link rel="canonical" href="https://brettlanier.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brettlanier.com/">
+  <meta property="og:title" content="Brett Lanier — Pedal Steel Guitar">
+  <meta property="og:description" content="Pedal steel guitar, Nashville. Remote sessions and pedal steel repair.">
+  <meta property="og:image" content="https://brettlanier.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/brett-steel-1600.webp"
+        imagesrcset="assets/brett-steel-900.webp 900w, assets/brett-steel-1600.webp 1600w, assets/brett-steel-2400.webp 2400w"
+        imagesizes="(max-width: 760px) 100vw, 1040px">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Brett Lanier",
+    "url": "https://brettlanier.com/",
+    "image": "https://brettlanier.com/assets/og-image.jpg",
+    "jobTitle": "Pedal steel guitarist",
+    "address": { "@type": "PostalAddress", "addressLocality": "Nashville", "addressRegion": "TN", "addressCountry": "US" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg:        #000000;
+      --bg-2:      #0f0f0f;
+      --ink:       #ffffff;
+      --ink-soft:  #b8b8b8;
+      --ink-faint: #8a8a8a;
+      --rule:      #262626;
+
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --wrap: 1120px;
+      --gutter: clamp(16px, 4vw, 40px);
+      --header-h: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 17px/1.6 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }  /* empty sections stay hidden until their content arrives */
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+    [id] { scroll-margin-top: calc(var(--header-h) + 8px); }
+
+    .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 10;
+      height: var(--header-h);
+      display: flex; align-items: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,0));
+      transition: background .25s ease;
+    }
+    .site-header.is-solid { background: rgba(0,0,0,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: none; }
+    .wordmark { font: 600 20px/1 var(--serif); letter-spacing: .01em; text-decoration: none; white-space: nowrap; }
+    .nav { display: flex; gap: 22px; }
+    .nav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
+    .nav a:hover, .nav .nav-cta { color: var(--ink); }
+    @media (max-width: 860px) {
+      .nav a:not(.nav-cta) { display: none; }
+    }
+
+    /* ---------- Hero: the whole photo framed on black, name underneath ---------- */
+    .hero {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: calc(var(--header-h) + clamp(12px, 3vh, 40px)) var(--gutter) clamp(48px, 8vh, 96px);
+    }
+    .hero img { height: auto; width: min(100%, calc(64vh * 2400 / 1827), 1040px); }
+    @supports (height: 1svh) { .hero img { width: min(100%, calc(64svh * 2400 / 1827), 1040px); } }
+    .hero-text { margin-top: clamp(20px, 3.5vh, 40px); }
+    .eyebrow { font: 600 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 14px; }
+    .hero h1 {
+      font: 500 clamp(2.8rem, 5vw, 5rem)/.95 var(--serif);
+      font-variation-settings: "opsz" 144;
+      letter-spacing: -.02em; margin: 0;
+    }
+
+    @media (max-width: 760px) {
+      .hero { align-items: stretch; text-align: left; }
+      .hero img { width: 100%; }
+    }
+
+    /* ---------- Sections: heading left, content right ---------- */
+    section.block { padding: clamp(56px, 8vw, 96px) 0; border-top: 1px solid var(--rule); }
+    section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 20px clamp(32px, 6vw, 88px); align-items: start; }
+    @media (max-width: 760px) { section.block > .wrap { grid-template-columns: 1fr; } }
+    h2 {
+      font: 500 clamp(1.9rem, 3.4vw, 2.6rem)/1.05 var(--serif);
+      font-variation-settings: "opsz" 120;
+      letter-spacing: -.015em; margin: 0;
+    }
+
+    .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+    .rows li {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 4px 24px;
+      padding: 18px 0; border-bottom: 1px solid var(--rule);
+    }
+    .rows .who { font: 500 clamp(21px, 2.2vw, 26px)/1.2 var(--serif); }
+    .rows .what { color: var(--ink-soft); font-size: 15px; text-align: right; }
+    @media (max-width: 560px) {
+      .rows li { grid-template-columns: 1fr; }
+      .rows .what { text-align: left; }
+    }
+
+    .media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    @media (max-width: 680px) { .media-grid { grid-template-columns: 1fr; } }
+    .yt {
+      position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 8px;
+      background: var(--bg-2) center / cover no-repeat;
+    }
+    .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .yt .play {
+      position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(0,0,0,.72); border: 1px solid rgba(255,255,255,.4);
+      display: grid; place-items: center; transition: background .15s ease;
+    }
+    .yt:hover .play { background: var(--ink); }
+    .yt .play::before { content: ""; margin-left: 5px; border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent var(--ink); }
+    .yt:hover .play::before { border-left-color: var(--bg); }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 0 22px; border-radius: 999px; margin-top: 24px;
+      font: 600 15px/1 var(--sans); text-decoration: none; white-space: nowrap;
+      background: var(--ink); color: var(--bg); border: 1px solid var(--ink); transition: background .15s ease;
+    }
+    .btn:hover { background: #d6d6d6; }
+
+    .links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .links a {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px;
+      text-decoration: none; font-weight: 500; transition: border-color .15s ease, background .15s ease;
+    }
+    .links a:hover { border-color: var(--ink); background: var(--bg-2); }
+    .links a::after { content: "↗"; color: var(--ink-soft); }
+
+    .mail {
+      font: 500 clamp(1.4rem, 3.6vw, 2.4rem)/1.2 var(--serif);
+      text-decoration: none; overflow-wrap: anywhere;
+      border-bottom: 1px solid var(--rule); transition: border-color .15s ease;
+    }
+    .mail:hover { border-bottom-color: var(--ink); }
+
+    footer { border-top: 1px solid var(--rule); padding: 28px 0 40px; font-size: 14px; color: var(--ink-faint); }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+    /* Empty slots in the draft; remove once the real content is in */
+    .slot { border: 1px dashed var(--ink-faint); border-radius: 8px; color: var(--ink-faint); font-size: 14px; display: grid; place-items: center; min-height: 64px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <div class="wrap">
+      <a class="wordmark" href="#top">Brett Lanier</a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#credits">Credits</a>
+        <a href="#listen" hidden>Listen</a>
+        <a href="#sessions">Remote sessions</a>
+        <a href="#repair">Repair</a>
+        <a href="#links" hidden>Links</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <img
+        src="assets/brett-steel-1600.webp"
+        srcset="assets/brett-steel-900.webp 900w, assets/brett-steel-1600.webp 1600w, assets/brett-steel-2400.webp 2400w"
+        sizes="(max-width: 760px) 100vw, 1040px"
+        width="2400" height="1827"
+        alt="Brett Lanier playing a Marlen pedal steel guitar on stage"
+        fetchpriority="high">
+      <div class="hero-text">
+        <p class="eyebrow">Pedal steel guitar · Nashville</p>
+        <h1>Brett Lanier</h1>
+      </div>
+    </div>
+
+    <section class="block" id="credits">
+      <div class="wrap">
+        <h2>Credits</h2>
+        <ul class="rows">
+          <li><span class="who">Billy Currington</span><span class="what">Touring band</span></li>
+          <li><span class="who">The Barr Brothers</span><span class="what">Live</span></li>
+          <li><span class="who">Timbo</span><span class="what">Pedal steel</span></li>
+          <li><span class="who">Mike Wheeler</span><span class="what">“El Dorado”</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="listen" hidden>
+      <div class="wrap">
+        <h2>Listen</h2>
+        <div class="media-grid">
+          <!-- A clip: <a class="yt" href="https://www.youtube.com/watch?v=VIDEO_ID" data-id="VIDEO_ID"><span class="play" aria-hidden="true"></span><span class="sr">Play: Song title</span></a> -->
+          <div class="yt slot">Video</div>
+          <div class="yt slot">Video</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="sessions">
+      <div class="wrap">
+        <h2>Remote sessions</h2>
+        <div>
+          <ul class="rows">
+            <li><span class="who">Pedal steel</span></li>
+            <li><span class="who">Guitar</span></li>
+            <li><span class="who">Baritone guitar</span></li>
+          </ul>
+          <a class="btn" href="mailto:brett@brettlanier.com?subject=Remote%20session">Book a session</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="repair">
+      <div class="wrap">
+        <h2>Pedal steel repair</h2>
+        <div>
+          <ul class="rows">
+            <li><span class="who">Restringing</span></li>
+            <li><span class="who">Tune-ups</span></li>
+          </ul>
+          <a class="btn" href="mailto:brett@brettlanier.com?subject=Pedal%20steel%20repair">Ask about a repair</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="links" hidden>
+      <div class="wrap">
+        <h2>Links</h2>
+        <div class="slot">Links</div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <div><a class="mail" href="mailto:brett@brettlanier.com">brett@brettlanier.com</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Brett Lanier</span>
+    </div>
+  </footer>
+
+  <script>
+    // Solid header once the hero has scrolled away.
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('is-solid', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Click-to-load YouTube: show the thumbnail, load the player only on click.
+    document.querySelectorAll('a.yt[data-id]').forEach((el) => {
+      const id = el.dataset.id;
+      el.style.backgroundImage = `url(https://i.ytimg.com/vi/${id}/hqdefault.jpg)`;
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const f = document.createElement('iframe');
+        f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+        f.allow = 'autoplay; encrypted-media; picture-in-picture';
+        f.allowFullscreen = true;
+        f.title = el.textContent.trim() || 'Video';
+        el.replaceChildren(f);
+      });
+    });
+  </script>
+</body>
+</html>
