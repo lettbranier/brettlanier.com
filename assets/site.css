@@ -72,8 +72,6 @@ section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) min
   letter-spacing: -.015em; margin: 0;
 }
 
-.page-photo { width: 100%; height: auto; margin-top: clamp(20px, 3vw, 32px); }
-
 .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .rows li { padding: 18px 0; border-bottom: 1px solid var(--rule); }
 .rows .who { font: 500 clamp(21px, 2.2vw, 26px)/1.2 var(--serif); }
@@ -110,6 +108,7 @@ section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) min
 }
 .strip::-webkit-scrollbar { display: none; }
 .strip img { flex: none; width: auto; max-width: none; height: clamp(220px, min(52vh, 62vw), 520px); scroll-snap-align: start; }
+.strip-tall img { height: clamp(300px, min(60vh, 110vw), 560px); }  /* portrait photos need the extra height */
 .strip-nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
 .strip-nav button {
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule);
