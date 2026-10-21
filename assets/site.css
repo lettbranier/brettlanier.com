@@ -38,7 +38,7 @@ a { color: inherit; }
   gap: 10px 32px; max-width: none;
 }
 .wordmark { font: 600 20px/1 var(--serif); letter-spacing: .01em; text-decoration: none; white-space: nowrap; }
-.nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.nav { display: flex; flex-wrap: wrap; gap: 12px clamp(28px, 3.2vw, 48px); }
 .nav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
 
