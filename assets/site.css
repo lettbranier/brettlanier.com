@@ -42,11 +42,12 @@ a { color: inherit; }
 .nav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
 /* Wider screens: the name and the five links share the top row with equal space between all of them.
-   The empty ::before counts as one more item, so the gap after the name matches the gaps between links. */
+   The ::before counts as one more item, so the gap after the name matches the gaps between links; its
+   zero-width character gives it a text baseline, so the name and the links sit on the same line. */
 @media (min-width: 761px) {
   .site-header .wrap { flex-wrap: nowrap; gap: 0; }
-  .nav { flex: 1; flex-wrap: nowrap; justify-content: space-between; gap: 24px; }
-  .nav::before { content: ""; }
+  .nav { flex: 1; flex-wrap: nowrap; justify-content: space-between; align-items: baseline; gap: 24px; }
+  .nav::before { content: "\200b"; }
 }
 
 /* ---------- Home: the whole photo framed on black, name underneath ---------- */
