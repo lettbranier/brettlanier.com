@@ -78,6 +78,9 @@ section.block { padding: clamp(56px, 8vw, 96px) 0; border-top: 1px solid var(--r
 .page > section.block:first-child { border-top: 0; padding-top: clamp(32px, 6vw, 72px); }
 section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 20px clamp(32px, 6vw, 88px); align-items: start; }
 @media (max-width: 760px) { section.block > .wrap { grid-template-columns: 1fr; } }
+/* A page with no visible title: one centred column of text instead of title-left, content-right */
+section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--gutter)); }
+.solo .bio { border-top: 0; padding-top: 0; }
 .page-title, h2 {
   font: 400 clamp(1.9rem, 3.4vw, 2.6rem)/1.05 var(--serif);
   letter-spacing: -.015em; margin: 0;
