@@ -94,12 +94,14 @@ section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--g
 .bio p:last-child { margin-bottom: 0; }
 .nw { white-space: nowrap; }   /* keeps hyphenated names like all-pull on one line */
 
-/* Small-print lists (instruments, credits): compact columns under a small label */
+/* Small-print lists (instruments, credits): three newspaper-style columns under a small label.
+   Each column flows on its own, so a name that wraps onto two lines leaves no hole beside it. */
 .compact {
-  list-style: none; margin: 0; padding: 12px 0 0; border-top: 1px solid var(--rule);
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(190px, calc(50% - 14px)), 1fr)); gap: 6px 28px;
+  list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid var(--rule);
+  column-count: 3; column-gap: 28px;
 }
-.compact li { font: 300 16px/1.45 var(--serif); }
+.compact li { font: 300 18px/1.45 var(--serif); margin-bottom: 8px; break-inside: avoid; }
+@media (max-width: 560px) { .compact { column-count: 2; } }
 .compact + .eyebrow { margin-top: 40px; }
 
 .mail {
