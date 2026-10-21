@@ -87,10 +87,9 @@ section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) min
 
 .page-photo { width: 100%; height: auto; margin-top: clamp(20px, 3vw, 32px); }
 
-/* A short bio: the opening line large, the rest a step smaller and softer */
+/* A short bio: every paragraph the same size, weight and colour */
 .bio { padding-top: 18px; border-top: 1px solid var(--rule); max-width: 34em; }
-.bio p { font: 400 clamp(17px, 1.6vw, 19px)/1.6 var(--serif); color: var(--ink-soft); margin: 0 0 1em; }
-.bio p:first-child { font-size: clamp(21px, 2.2vw, 26px); line-height: 1.45; color: var(--ink); }
+.bio p { font: 400 clamp(17px, 1.6vw, 19px)/1.6 var(--serif); color: var(--ink); margin: 0 0 1em; }
 .bio p:last-child { margin-bottom: 0; }
 .nw { white-space: nowrap; }   /* keeps hyphenated names like all-pull on one line */
 
