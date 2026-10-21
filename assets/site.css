@@ -12,7 +12,11 @@
 
   --wrap: 1120px;
   --gutter: clamp(16px, 4vw, 40px);
+  /* Width of the home photo (60% of the screen's height at its 2400x1827 shape, at most 1040px).
+     The header menu uses it too, to line up with the photo's edges. */
+  --photo-w: min(calc(60vh * 2400 / 1827), 1040px);
 }
+@supports (height: 1svh) { :root { --photo-w: min(calc(60svh * 2400 / 1827), 1040px); } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -41,13 +45,15 @@ a { color: inherit; }
 .nav { display: flex; flex-wrap: wrap; gap: 12px clamp(28px, 3.2vw, 48px); }
 .nav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
-/* Wider screens: the name and the five links share the top row with equal space between all of them.
-   The ::before counts as one more item, so the gap after the name matches the gaps between links; its
-   zero-width character gives it a text baseline, so the name and the links sit on the same line. */
+/* Wider screens: the links span exactly the home photo's width, centred like the photo, so the first
+   link starts at its left edge and the last ends at its right edge (on every page, so the menu never
+   moves). The name keeps the left column; baseline alignment keeps it on the links' line. */
 @media (min-width: 761px) {
-  .site-header .wrap { flex-wrap: nowrap; gap: 0; }
-  .nav { flex: 1; flex-wrap: nowrap; justify-content: space-between; align-items: baseline; gap: 24px; }
-  .nav::before { content: "\200b"; }
+  .site-header .wrap {
+    display: grid; align-items: baseline; column-gap: 32px;
+    grid-template-columns: minmax(max-content, 1fr) minmax(min-content, var(--photo-w)) minmax(0, 1fr);
+  }
+  .nav { flex-wrap: nowrap; justify-content: space-between; align-items: baseline; gap: 16px; }
 }
 
 /* ---------- Home: the whole photo framed on black, name underneath ---------- */
@@ -55,8 +61,7 @@ a { color: inherit; }
   display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: clamp(28px, 7vh, 80px) var(--gutter) clamp(48px, 8vh, 96px);
 }
-.hero img { height: auto; width: min(100%, calc(60vh * 2400 / 1827), 1040px); }
-@supports (height: 1svh) { .hero img { width: min(100%, calc(60svh * 2400 / 1827), 1040px); } }
+.hero img { height: auto; width: min(100%, var(--photo-w)); }
 .hero-text { margin-top: clamp(20px, 3.5vh, 40px); }
 .eyebrow { font: 600 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 14px; }
 .hero h1 {
