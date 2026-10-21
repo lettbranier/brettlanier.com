@@ -86,8 +86,6 @@ section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--g
   letter-spacing: -.015em; margin: 0;
 }
 
-.page-photo { width: 100%; height: auto; margin-top: clamp(20px, 3vw, 32px); }
-
 /* A short bio: every paragraph the same size, weight and colour */
 .bio { padding-top: 18px; border-top: 1px solid var(--rule); }
 .bio p { font: 300 clamp(17px, 1.6vw, 19px)/1.6 var(--serif); color: var(--ink); margin: 0 0 1em; }
@@ -103,13 +101,6 @@ section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--g
 .compact li { font: 300 18px/1.45 var(--serif); margin-bottom: 8px; break-inside: avoid; }
 @media (max-width: 560px) { .compact { column-count: 2; } }
 .compact + .eyebrow { margin-top: 40px; }
-
-.mail {
-  font: 300 clamp(1.4rem, 3.6vw, 2.4rem)/1.2 var(--serif);
-  text-decoration: none; overflow-wrap: anywhere;
-  border-bottom: 1px solid var(--rule); transition: border-color .15s ease;
-}
-.mail:hover { border-bottom-color: var(--ink); }
 
 /* ---------- Extra photos: one row that scrolls sideways, lined up with the page's left edge ---------- */
 .photos { padding: clamp(40px, 6vw, 72px) 0; border-top: 1px solid var(--rule); }
@@ -184,4 +175,6 @@ html.lb-open { overflow: hidden; }
 .lb-next { left: calc(50% + 8px); }
 
 footer { border-top: 1px solid var(--rule); padding: 28px 0 40px; font-size: 14px; color: var(--ink-faint); }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; }
+.footer-mail { color: var(--ink); font-size: 15px; text-decoration: none; border-bottom: 1px solid var(--rule); }
+.footer-mail:hover { border-bottom-color: var(--ink); }
