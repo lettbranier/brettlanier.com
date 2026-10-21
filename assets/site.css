@@ -94,16 +94,13 @@ section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--g
 .bio p:last-child { margin-bottom: 0; }
 .nw { white-space: nowrap; }   /* keeps hyphenated names like all-pull on one line */
 
-.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.rows li { padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.rows .who { font: 300 clamp(21px, 2.2vw, 26px)/1.2 var(--serif); }
-
-.names {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); column-gap: 32px;
-  border-top: 1px solid var(--rule);
+/* Small-print lists (instruments, credits): compact columns under a small label */
+.compact {
+  list-style: none; margin: 0; padding: 12px 0 0; border-top: 1px solid var(--rule);
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(190px, calc(50% - 14px)), 1fr)); gap: 6px 28px;
 }
-.names li { font: 300 20px/1.3 var(--serif); padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.compact li { font: 300 16px/1.45 var(--serif); }
+.compact + .eyebrow { margin-top: 40px; }
 
 .mail {
   font: 300 clamp(1.4rem, 3.6vw, 2.4rem)/1.2 var(--serif);

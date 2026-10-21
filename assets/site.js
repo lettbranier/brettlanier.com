@@ -32,7 +32,7 @@
 })();
 
 // Old one-page links (brettlanier.com/#credits and so on) go to the page that replaced them.
-const movedTo = { '#credits': '/credits/', '#sessions': '/sessions/', '#repair': '/repair/', '#contact': '/contact/' };
+const movedTo = { '#credits': '/sessions/', '#sessions': '/sessions/', '#repair': '/repair/', '#contact': '/contact/' };
 if (location.pathname === '/' && movedTo[location.hash]) location.replace(movedTo[location.hash]);
 
 // Photo strip arrows: page sideways, dim at either end, hide when everything fits.
