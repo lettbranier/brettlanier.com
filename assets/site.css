@@ -161,5 +161,29 @@ section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) min
 .links a:hover { border-color: var(--ink); background: var(--bg-2); }
 .links a::after { content: "↗"; color: var(--ink-soft); }
 
+/* ---------- Photo viewer: any photo opens large on black ---------- */
+main img { cursor: zoom-in; }
+html.lb-open { overflow: hidden; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 50;
+  display: grid; place-items: center;
+  background: var(--bg);
+}
+.lightbox img {
+  width: auto; height: auto; cursor: zoom-out;
+  max-width: calc(100vw - 32px); max-height: calc(100vh - 128px);
+}
+@supports (height: 1dvh) { .lightbox img { max-height: calc(100dvh - 128px); } }
+.lightbox button {
+  position: absolute; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--rule); background: rgba(0, 0, 0, .6);
+  color: var(--ink); font: 400 20px/1 var(--sans); cursor: pointer;
+}
+.lightbox button:hover { border-color: var(--ink); }
+.lb-close { top: 16px; right: 16px; }
+.lb-prev, .lb-next { bottom: 16px; }
+.lb-prev { left: calc(50% - 52px); }
+.lb-next { left: calc(50% + 8px); }
+
 footer { border-top: 1px solid var(--rule); padding: 28px 0 40px; font-size: 14px; color: var(--ink-faint); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }

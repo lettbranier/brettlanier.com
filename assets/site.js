@@ -55,6 +55,94 @@ if (strip && stripNav) {
   updateArrows();
 }
 
+// Click any photo to see it large. Inside a strip, the arrows (or a swipe, or the arrow keys) step
+// through that strip; Esc, the × or a click outside the photo closes it. The photo already on the
+// page shows at once, then the largest file in its srcset replaces it when it arrives.
+const photos = [...document.querySelectorAll('main img')];
+if (photos.length) {
+  const box = document.createElement('div');
+  box.className = 'lightbox';
+  box.hidden = true;
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.setAttribute('aria-label', 'Photo');
+  box.innerHTML = '<img alt="">'
+    + '<button class="lb-close" type="button" aria-label="Close">×</button>'
+    + '<button class="lb-prev" type="button" aria-label="Previous photo">←</button>'
+    + '<button class="lb-next" type="button" aria-label="Next photo">→</button>';
+  document.body.append(box);
+  const big = box.querySelector('img');
+  const [closeBtn, prevBtn, nextBtn] = box.querySelectorAll('button');
+  let group = [], at = 0, opener = null;
+
+  const largest = (img) => {
+    const set = img.getAttribute('srcset');
+    if (!set) return img.currentSrc || img.src;
+    return set.split(',').map((s) => s.trim().split(/\s+/))
+      .sort((a, b) => parseInt(b[1], 10) - parseInt(a[1], 10))[0][0];
+  };
+  const show = (i) => {
+    at = (i + group.length) % group.length;
+    const img = group[at];
+    big.alt = img.alt;
+    big.src = img.currentSrc || img.src;
+    const full = largest(img);
+    if (full && !big.src.endsWith(full)) {
+      const pre = new Image();
+      pre.onload = () => { if (group[at] === img) big.src = full; };
+      pre.src = full;
+    }
+  };
+  const open = (img) => {
+    const strip = img.closest('.strip');
+    group = strip ? [...strip.querySelectorAll('img')] : [img];
+    opener = img;
+    prevBtn.hidden = nextBtn.hidden = group.length < 2;
+    show(group.indexOf(img));
+    box.hidden = false;
+    document.documentElement.classList.add('lb-open');
+    closeBtn.focus();
+  };
+  const close = () => {
+    box.hidden = true;
+    big.removeAttribute('src');
+    document.documentElement.classList.remove('lb-open');
+    if (opener) opener.focus({ preventScroll: true });
+  };
+
+  photos.forEach((img) => {
+    img.tabIndex = 0;                                   // reachable and openable from the keyboard
+    img.addEventListener('click', () => open(img));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+    });
+  });
+  prevBtn.addEventListener('click', () => show(at - 1));
+  nextBtn.addEventListener('click', () => show(at + 1));
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', (e) => { if (!e.target.closest('button')) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (box.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft' && group.length > 1) show(at - 1);
+    else if (e.key === 'ArrowRight' && group.length > 1) show(at + 1);
+    else if (e.key === 'Tab') {                         // keep focus on the viewer's buttons
+      const btns = [closeBtn, prevBtn, nextBtn].filter((b) => !b.hidden);
+      const i = btns.indexOf(document.activeElement);
+      e.preventDefault();
+      btns[(i + (e.shiftKey ? -1 : 1) + btns.length) % btns.length].focus();
+    }
+  });
+  let startX = null;                                    // swipe left/right on a phone
+  box.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', (e) => {
+    if (startX === null || group.length < 2) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+  });
+}
+
 // Click-to-load YouTube: show the thumbnail, load the player only on click.
 document.querySelectorAll('a.yt[data-id]').forEach((el) => {
   const id = el.dataset.id;
