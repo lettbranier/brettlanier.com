@@ -7,10 +7,10 @@
   --ink-faint: #8a8a8a;
   --rule:      #262626;
 
-  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --wrap: 1120px;
+  --wrap: 1240px;
   --gutter: clamp(16px, 4vw, 40px);
   /* Width of the home photo (60% of the screen's height at its 2400x1827 shape, at most 1040px).
      The header menu uses it too, to line up with the photo's edges. */
@@ -41,7 +41,7 @@ a { color: inherit; }
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
   gap: 10px 32px; max-width: none;
 }
-.wordmark { font: 600 20px/1 var(--serif); letter-spacing: .01em; text-decoration: none; white-space: nowrap; }
+.wordmark { font: 500 20px/1 var(--serif); letter-spacing: .01em; text-decoration: none; white-space: nowrap; }
 .nav { display: flex; flex-wrap: wrap; gap: 12px clamp(28px, 3.2vw, 48px); }
 .nav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
@@ -65,8 +65,7 @@ a { color: inherit; }
 .hero-text { margin-top: clamp(20px, 3.5vh, 40px); }
 .eyebrow { font: 600 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 14px; }
 .hero h1 {
-  font: 500 clamp(2.8rem, 5vw, 5rem)/.95 var(--serif);
-  font-variation-settings: "opsz" 144;
+  font: 400 clamp(2.8rem, 5vw, 5rem)/.95 var(--serif);
   letter-spacing: -.02em; margin: 0;
 }
 @media (max-width: 760px) {
@@ -77,32 +76,31 @@ a { color: inherit; }
 /* ---------- Page body: title left, content right ---------- */
 section.block { padding: clamp(56px, 8vw, 96px) 0; border-top: 1px solid var(--rule); }
 .page > section.block:first-child { border-top: 0; padding-top: clamp(32px, 6vw, 72px); }
-section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 20px clamp(32px, 6vw, 88px); align-items: start; }
+section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 20px clamp(32px, 6vw, 88px); align-items: start; }
 @media (max-width: 760px) { section.block > .wrap { grid-template-columns: 1fr; } }
 .page-title, h2 {
-  font: 500 clamp(1.9rem, 3.4vw, 2.6rem)/1.05 var(--serif);
-  font-variation-settings: "opsz" 120;
+  font: 400 clamp(1.9rem, 3.4vw, 2.6rem)/1.05 var(--serif);
   letter-spacing: -.015em; margin: 0;
 }
 
 .page-photo { width: 100%; height: auto; margin-top: clamp(20px, 3vw, 32px); }
 
 /* A short bio: every paragraph the same size, weight and colour */
-.bio { padding-top: 18px; border-top: 1px solid var(--rule); max-width: 34em; }
-.bio p { font: 400 clamp(17px, 1.6vw, 19px)/1.6 var(--serif); color: var(--ink); margin: 0 0 1em; }
+.bio { padding-top: 18px; border-top: 1px solid var(--rule); }
+.bio p { font: 300 clamp(17px, 1.6vw, 19px)/1.6 var(--serif); color: var(--ink); margin: 0 0 1em; }
 .bio p:last-child { margin-bottom: 0; }
 .nw { white-space: nowrap; }   /* keeps hyphenated names like all-pull on one line */
 
 .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .rows li { padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.rows .who { font: 500 clamp(21px, 2.2vw, 26px)/1.2 var(--serif); }
+.rows .who { font: 300 clamp(21px, 2.2vw, 26px)/1.2 var(--serif); }
 
 .names {
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); column-gap: 32px;
   border-top: 1px solid var(--rule);
 }
-.names li { font: 500 20px/1.3 var(--serif); padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.names li { font: 300 20px/1.3 var(--serif); padding: 14px 0; border-bottom: 1px solid var(--rule); }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -113,7 +111,7 @@ section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) min
 .btn:hover { background: #d6d6d6; }
 
 .mail {
-  font: 500 clamp(1.4rem, 3.6vw, 2.4rem)/1.2 var(--serif);
+  font: 300 clamp(1.4rem, 3.6vw, 2.4rem)/1.2 var(--serif);
   text-decoration: none; overflow-wrap: anywhere;
   border-bottom: 1px solid var(--rule); transition: border-color .15s ease;
 }
