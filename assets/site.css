@@ -125,14 +125,16 @@ section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--g
 .strip-nav button:hover:not(:disabled) { border-color: var(--ink); }
 .strip-nav button:disabled { opacity: .3; cursor: default; }
 
-/* ---------- Home: three photos in one row that fits the page, no scrolling. Each photo's flex-grow
-   is its width ÷ height, so all three come out the same height and fill the row exactly. ---------- */
+/* ---------- A few photos in one row that fits the page, no scrolling (home, Sessions). Each photo's
+   flex-grow is its width ÷ height, so all of them come out the same height and fill the row exactly. ---------- */
 .photo-row { display: flex; align-items: flex-start; gap: 12px; }
 .photo-row img { flex-shrink: 1; flex-basis: 0; min-width: 0; height: auto; }
-/* Phones and small tablets: the wide first photo on its own row, the other two sharing the next */
+/* Sessions: the row lines up with the edges of the text column above it */
+.photo-row.match-text { max-width: calc(900px + 2 * var(--gutter)); }
+/* Home, on phones and small tablets: the wide first photo on its own row, the other two sharing the next */
 @media (max-width: 760px) {
-  .photo-row { flex-wrap: wrap; }
-  .photo-row img:first-child { flex-basis: 100%; }
+  .photo-row.first-wide { flex-wrap: wrap; }
+  .photo-row.first-wide img:first-child { flex-basis: 100%; }
 }
 
 /* ---------- For the Listen and Links pages, once there are videos and links ---------- */
