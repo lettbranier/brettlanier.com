@@ -14,6 +14,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    /* The app's own icon beside its name, rounded the way the home screen rounds it */
+    .app-title { display: flex; align-items: center; gap: clamp(14px, 1.6vw, 20px); }
+    .app-icon { width: clamp(52px, 5.5vw, 68px); height: auto; border-radius: 22.37%; flex: none; }
+  </style>
 </head>
 <body>
 
@@ -32,7 +37,7 @@
   <main class="page">
     <section class="block">
       <div class="wrap solo">
-        <h1 class="page-title">SteelTune</h1>
+        <h1 class="page-title app-title"><img class="app-icon" src="/assets/steeltune-icon-256.png" width="256" height="256" alt="">SteelTune</h1>
         <div class="bio">
           <p>SteelTune is a tuner built for steel guitar and good for any stringed instrument: pedal steel, lap steel, resophonic, Weissenborn, slack key, and electric and acoustic guitar. It comes with the sweetened tunings steel players already use, lets you adjust any string in half-cent steps, and lets you swipe between your tunings like photos.</p>
           <p><strong>Getting started.</strong> Allow microphone access when SteelTune asks, then play a string. If you said no by mistake, open your phone's settings, find SteelTune, and turn on its microphone access.</p>
