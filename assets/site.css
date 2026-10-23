@@ -64,6 +64,7 @@ a { color: inherit; }
 }
 .hero img { height: auto; width: min(100%, var(--photo-w)); }
 .hero-text { margin-top: clamp(20px, 3.5vh, 40px); }
+.hero h1 + .eyebrow { margin: 18px 0 0; }   /* the small line of what he does, under the name */
 .eyebrow { font: 600 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 14px; }
 .hero h1 {
   font: 400 clamp(2.8rem, 5vw, 5rem)/.95 var(--serif);
@@ -72,6 +73,7 @@ a { color: inherit; }
 @media (max-width: 760px) {
   .hero { align-items: stretch; text-align: left; }
   .hero img { width: 100%; }
+  .hero h1 + .eyebrow { letter-spacing: .1em; }   /* keeps the four words on one line on a phone */
 }
 
 /* ---------- Page body: title left, content right ---------- */
