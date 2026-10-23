@@ -55,7 +55,7 @@ if (strip && stripNav) {
   updateArrows();
 }
 
-// Click any photo to see it large. Inside a strip, the arrows (or a swipe, or the arrow keys) step
+// Click any photo to see it large. Inside a strip or photo row, the arrows (or a swipe, or the arrow keys) step
 // through that strip; Esc, the × or a click outside the photo closes it. The photo already on the
 // page shows at once, then the largest file in its srcset replaces it when it arrives.
 const photos = [...document.querySelectorAll('main img')];
@@ -94,7 +94,7 @@ if (photos.length) {
     }
   };
   const open = (img) => {
-    const strip = img.closest('.strip');
+    const strip = img.closest('.strip, .photo-row');
     group = strip ? [...strip.querySelectorAll('img')] : [img];
     opener = img;
     prevBtn.hidden = nextBtn.hidden = group.length < 2;
