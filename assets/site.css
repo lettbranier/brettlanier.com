@@ -66,13 +66,16 @@ a { color: inherit; }
 .hero-text { margin-top: clamp(20px, 3.5vh, 40px); }
 .hero h1 + .eyebrow { margin: 18px 0 0; }   /* the small line of what he does, under the name */
 .eyebrow { font: 600 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 14px; }
+/* The name: Spectral Light (loaded on the home page only), a little smaller and drawn 6% wider than normal */
 .hero h1 {
-  font: 400 clamp(2.8rem, 5vw, 5rem)/.95 var(--serif);
-  letter-spacing: -.02em; margin: 0;
+  font: 300 clamp(2.5rem, 4.45vw, 4.45rem)/.95 Spectral, var(--serif);
+  letter-spacing: .015em; transform: scaleX(1.06);
+  width: fit-content; margin: 0 auto;   /* the box hugs the name, so the widening can't push past the page edge */
 }
 @media (max-width: 760px) {
   .hero { align-items: stretch; text-align: left; }
   .hero img { width: 100%; }
+  .hero h1 { margin: 0; transform-origin: left; }  /* widen from the left edge, so the name stays lined up with the photo */
   .hero h1 + .eyebrow { letter-spacing: .1em; }   /* keeps the four words on one line on a phone */
 }
 
