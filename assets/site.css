@@ -35,13 +35,13 @@ a { color: inherit; }
 
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 
-/* ---------- Header: the three page links, centred, with space between that grows with the window ---------- */
+/* ---------- Header: the four page links, centred, with space between that grows with the window ---------- */
 .site-header { padding: 20px 0; }
 .site-header .wrap { display: flex; justify-content: center; max-width: none; }
-.nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px clamp(28px, 22vw, 440px); }
+.nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px clamp(28px, 13vw, 300px); }
 .nav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
-@media (max-width: 560px) { .nav { column-gap: 28px; } }   /* keep all three on one line on a phone */
+@media (max-width: 560px) { .nav { column-gap: 18px; } .nav a { font-size: 13px; } }   /* keep all four on one line on a phone */
 
 /* ---------- Home: the whole photo framed on black, name underneath ---------- */
 .hero {
@@ -68,6 +68,7 @@ section.block > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) min
 /* A page with no visible title: one centred column of text instead of title-left, content-right */
 section.block > .wrap.solo { display: block; max-width: calc(900px + 2 * var(--gutter)); }
 .solo .bio { border-top: 0; padding-top: 0; }
+.solo .page-title { margin-bottom: clamp(20px, 3vw, 32px); }   /* the SteelTune pages: room between the title and the text */
 .page-title, h2 {
   font: 400 clamp(1.9rem, 3.4vw, 2.6rem)/1.05 var(--serif);
   letter-spacing: -.015em; margin: 0;
