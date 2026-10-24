@@ -55,9 +55,11 @@ if (strip && stripNav) {
   updateArrows();
 }
 
-// Click any photo to see it large. Inside a strip or photo row, the arrows (or a swipe, or the arrow keys) step
-// through that strip; Esc, the × or a click outside the photo closes it. The photo already on the
-// page shows at once, then the largest file in its srcset replaces it when it arrives.
+// Click any photo to see it large. Inside a strip or photo row, the arrows (or a sideways swipe, or the arrow
+// keys) step through it; Esc, the ×, a click, a swipe up or down, or scrolling the mouse wheel closes it. The
+// viewer is black like the page, so someone who taps a photo by accident and tries to scroll gets the page back
+// instead of being stuck behind it. The photo already on the page shows at once, then the largest file in its
+// srcset replaces it when it arrives.
 const photos = [...document.querySelectorAll('main img')];
 if (photos.length) {
   const box = document.createElement('div');
@@ -133,14 +135,18 @@ if (photos.length) {
       btns[(i + (e.shiftKey ? -1 : 1) + btns.length) % btns.length].focus();
     }
   });
-  let startX = null;                                    // swipe left/right on a phone
-  box.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  let startX = null, startY = null;                     // on a phone: sideways steps, up or down closes
+  box.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+  }, { passive: true });
   box.addEventListener('touchend', (e) => {
-    if (startX === null || group.length < 2) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    startX = null;
-    if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY;
+    startX = startY = null;
+    if (Math.abs(dy) > 50 && Math.abs(dy) > Math.abs(dx)) close();
+    else if (Math.abs(dx) > 50 && group.length > 1) show(at + (dx < 0 ? 1 : -1));
   });
+  box.addEventListener('wheel', (e) => { if (Math.abs(e.deltaY) > 4) close(); }, { passive: true });
 }
 
 // Click-to-load YouTube: show the thumbnail, load the player only on click.
