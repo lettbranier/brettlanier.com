@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "S4PTG2F7FQ.com.brett.steeltune",
+          "S4PTG2F7FQ.com.brett.steeltune.dev"
+        ],
+        "components": [
+          { "/": "/steeltune/t/*", "comment": "Shared SteelTune tunings" },
+          { "/": "/steeltune/t", "comment": "The same, without the trailing slash" }
+        ]
+      }
+    ]
+  }
+}

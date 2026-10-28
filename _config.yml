@@ -1,0 +1,6 @@
+# GitHub Pages builds this site with Jekyll, which leaves out anything whose
+# name starts with a dot. .well-known/ is let through because Apple reads
+# /.well-known/apple-app-site-association to let SteelTune open its
+# shared-tuning links (/steeltune/t/...) in the app.
+include:
+  - .well-known
